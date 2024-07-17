@@ -200,6 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stemGenerator: {fileID: 1751924531}
+  startStemCount: 16
+  startPosY: -4
 --- !u!1 &312562962
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,8 +539,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stemPrefab: {fileID: 2188079471454574455, guid: a161d26147aef674fae01f556e5bc847, type: 3}
-  startPosY: -4
-  startStemCount: 16
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

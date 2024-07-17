@@ -10,10 +10,6 @@ namespace Game.Tree
 	{
 		/* Fields */
 		[SerializeField] StemObject stemPrefab;
-		[SerializeField] float startPosY = -4;
-		[SerializeField] int startStemCount = 5;
-
-		float currentStemPosY;
 
 		//-------------------------------------------------------------------
 		/* Properties */
@@ -23,37 +19,20 @@ namespace Game.Tree
 
 		//-------------------------------------------------------------------
 		/* Methods */
-		public void GenerateStemsOnStart(Queue<StemObject> stems)
-		{
-			currentStemPosY = startPosY;
-
-			// 一番下の幹はリストに追加しないで生成
-			GenerateStem();
-
-			// 初期生成
-			for (int i = 0; i < startStemCount; i++)
-			{
-				GenerateStem(stems);
-			}
-		}
-
 		/// <summary> 幹生成 </summary>
 		/// <remarks> Queueに追加しない </remarks>
-		public StemObject GenerateStem()
+		public StemObject GenerateStem(float currentStemPosY)
 		{
 			// 生成
 			var stem = Instantiate(stemPrefab, new Vector3(0, currentStemPosY, 0), Quaternion.identity, transform);
-
-			// 木の高さを更新
-			currentStemPosY += stem.transform.localScale.y;
 
 			return stem;
 		}
 
 		/// <summary> Queueに追加して幹生成 </summary>
-		public StemObject GenerateStem(Queue<StemObject> stems)
+		public StemObject GenerateStem(float currentStemPosY, Queue<StemObject> stems)
 		{
-			var stem = GenerateStem();
+			var stem = GenerateStem(currentStemPosY);
 			stems.Enqueue(stem);
 
 			return stem;

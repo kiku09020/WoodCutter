@@ -29,7 +29,6 @@ namespace Game.Tree
 			var cutStem = stems.Dequeue();
 			Object.Destroy(cutStem.gameObject);
 
-			// TODO: 幹を下にずらす処理
 			foreach (var stem in stems)
 			{
 				stem.transform.position += new Vector3(0, -cutStem.transform.localScale.y, 0);
