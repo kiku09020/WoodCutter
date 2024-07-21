@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Game.Tree.Stem;
 using UnityEngine;
 
-namespace Game.Tree
+namespace Game.Player
 {
 	/// <summary> 幹切り処理 </summary>
 	public class StemCutter

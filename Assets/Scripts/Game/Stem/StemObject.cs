@@ -8,11 +8,12 @@ namespace Game.Tree.Stem
 	public class StemObject : MonoBehaviour
 	{
 		/* Fields */
-		bool hasBranch = false;
 		BranchObject branch;
 
 		//-------------------------------------------------------------------
 		/* Properties */
+		public bool HasBranch { get; private set; }
+		public Directions BranchDirection { get; private set; }
 
 		//-------------------------------------------------------------------
 		/* Events */
@@ -20,10 +21,11 @@ namespace Game.Tree.Stem
 		//-------------------------------------------------------------------
 		/* Methods */
 		/// <summary> 枝をセット </summary>
-		public void SetBranch(BranchObject branch)
+		public void SetBranch(BranchObject branch, Directions direction)
 		{
-			hasBranch = true;
+			HasBranch = true;
 			this.branch = branch;
+			BranchDirection = direction;
 		}
 
 		/// <summary> 幹を切る </summary>
@@ -31,7 +33,7 @@ namespace Game.Tree.Stem
 		{
 			Destroy(gameObject);
 
-			if (hasBranch)
+			if (HasBranch)
 			{
 				Destroy(branch.gameObject);
 			}

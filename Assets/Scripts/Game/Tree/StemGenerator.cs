@@ -81,11 +81,12 @@ namespace Game.Tree
 
 				// 左右どちらに生成するか
 				var isLeftBranch = Random.value < 0.5f;
+				var branchDir = isLeftBranch ? Directions.Left : Directions.Right;
 				var branchPosX = isLeftBranch ? -1.0f : 1.0f;
 				var branchPos = new Vector3(branchPosX, 0, 0);
 				branch.transform.localPosition = branchPos;
 
-				stem.SetBranch(branch);
+				stem.SetBranch(branch, branchDir);
 
 				// 枝同士の間隔値を設定
 				currentBranchDistance = startMinBranchDistance;

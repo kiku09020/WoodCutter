@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Player;
 using Game.Tree.Stem;
 using UnityEngine;
 
@@ -9,9 +10,10 @@ namespace Game.Tree
 	public class TreeObject : MonoBehaviour
 	{
 		/* Fields */
+		[SerializeField] PlayerObject player;
+
 		[Header("Components")]
 		[SerializeField] StemGenerator stemGenerator;
-		StemCutter stemCutter = new();
 
 		[Header("Properties")]
 		[SerializeField] int startStemCount = 16;
@@ -32,21 +34,9 @@ namespace Game.Tree
 
 			// 初期生成
 			GenerateStemsOnStart();
-		}
 
-		void Update()
-		{
-			if (Input.GetMouseButtonDown(0))
-			{
-				// 幹生成
-				var generatedStem = stemGenerator.GenerateStem(currentStemPosY, stems);
-				AddStemPosY(generatedStem);
-
-				// 幹切る
-				var cutStem = stemCutter.CutStem(stems);
-				RemoveStemPosY(cutStem);
-
-			}
+			// カットイベント登録
+			player.OnCutTree += CutStem;
 		}
 		//-------------------------------------------------------------------
 		/* Methods */
@@ -77,6 +67,20 @@ namespace Game.Tree
 				var stem = stemGenerator.GenerateStem(currentStemPosY, stems);
 				AddStemPosY(stem);
 			}
+		}
+
+		//------------------------------------------------------------
+
+		/// <summary> 木を切る処理 </summary>
+		void CutStem(StemCutter stemCutter)
+		{
+			// 幹生成
+			var generatedStem = stemGenerator.GenerateStem(currentStemPosY, stems);
+			AddStemPosY(generatedStem);
+
+			// 幹切る
+			var cutStem = stemCutter.CutStem(stems);
+			RemoveStemPosY(cutStem);
 		}
 
 	}
