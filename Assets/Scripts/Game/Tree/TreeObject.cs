@@ -28,6 +28,8 @@ namespace Game.Tree
 		/* Events */
 		void Awake()
 		{
+			stemGenerator.Initialize();
+
 			// 初期生成
 			GenerateStemsOnStart();
 		}
@@ -66,7 +68,7 @@ namespace Game.Tree
 			currentStemPosY = startPosY;
 
 			// 一番下の幹はリストに追加しないで生成
-			var firstStem = stemGenerator.GenerateStem(currentStemPosY);
+			var firstStem = stemGenerator.GenerateStem(currentStemPosY, false);
 			AddStemPosY(firstStem);
 
 			// 初期生成

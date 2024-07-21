@@ -164,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 281117166}
   - component: {fileID: 281117167}
+  - component: {fileID: 281117168}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -199,9 +200,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f1ddbcf1a07a54fa938c8eb9c5e159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stemGenerator: {fileID: 1751924531}
+  stemGenerator: {fileID: 281117168}
   startStemCount: 16
   startPosY: -4
+--- !u!114 &281117168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281117165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0609e5ecbeeef3f469863e1638146e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stemPrefab: {fileID: 2188079471454574455, guid: a161d26147aef674fae01f556e5bc847, type: 3}
+  branchPrefab: {fileID: 7337137423754721157, guid: 1cdff5be2bc47ac4cb1774b65001a3d7, type: 3}
+  branchProb: 0.3
 --- !u!1 &312562962
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +519,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1751924530}
-  - component: {fileID: 1751924531}
   m_Layer: 0
   m_Name: Stems
   m_TagString: Untagged
@@ -526,19 +541,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 281117166}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1751924531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751924529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0609e5ecbeeef3f469863e1638146e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stemPrefab: {fileID: 2188079471454574455, guid: a161d26147aef674fae01f556e5bc847, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

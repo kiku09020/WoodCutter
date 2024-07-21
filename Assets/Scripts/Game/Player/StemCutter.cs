@@ -27,7 +27,7 @@ namespace Game.Tree
 			}
 
 			var cutStem = stems.Dequeue();
-			Object.Destroy(cutStem.gameObject);
+			cutStem.CutStem();
 
 			foreach (var stem in stems)
 			{

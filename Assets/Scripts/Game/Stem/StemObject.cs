@@ -8,19 +8,34 @@ namespace Game.Tree.Stem
 	public class StemObject : MonoBehaviour
 	{
 		/* Fields */
+		bool hasBranch = false;
+		BranchObject branch;
 
 		//-------------------------------------------------------------------
 		/* Properties */
 
 		//-------------------------------------------------------------------
 		/* Events */
-		void Awake()
-		{
-
-		}
 
 		//-------------------------------------------------------------------
 		/* Methods */
+		/// <summary> 枝をセット </summary>
+		public void SetBranch(BranchObject branch)
+		{
+			hasBranch = true;
+			this.branch = branch;
+		}
+
+		/// <summary> 幹を切る </summary>
+		public void CutStem()
+		{
+			Destroy(gameObject);
+
+			if (hasBranch)
+			{
+				Destroy(branch.gameObject);
+			}
+		}
 
 	}
 }
