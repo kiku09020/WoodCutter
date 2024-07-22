@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Template.Utils.UI.UIManager;
 using UnityEngine;
 
-namespace Template.Utils.UI.UIManager
+namespace Game.UI
 {
-    public class MainUIGroup : UIGroup
-    {
-        
-    }
+	public class MainUIGroup : UIGroup
+	{
+
+	}
 }

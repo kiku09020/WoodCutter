@@ -8,6 +8,8 @@ namespace Game.Player
 	/// <summary> プレイヤー </summary>
 	public class PlayerObject : MonoBehaviour
 	{
+		[SerializeField] InputManager inputManager;
+
 		/* Fields */
 		Directions prevDirection;
 		StemCutter stemCutter = new();
@@ -27,35 +29,29 @@ namespace Game.Player
 		/// <summary> タップ時のイベント </summary>
 		public event System.Action OnTapped;
 
-		void Update()
+		void Awake()
 		{
-			if (Input.GetMouseButtonDown(0))
+			Direction = Directions.Right;
+			prevDirection = Direction;
+
+			inputManager.OnClick += (direction) =>
 			{
-				// 方向転換
-				SetDirection();
+				SetDirection(direction);
 
 				// カット
 				OnCutTree?.Invoke(stemCutter);
 
 				// タップイベント
 				OnTapped?.Invoke();
-			}
+			};
 		}
 
 		//-------------------------------------------------------------------
 		/* Methods */
 		/// <summary> プレイヤーの左右位置を変更 </summary>
-		void SetDirection()
+		void SetDirection(Directions direction)
 		{
-			// 画面半分で方向を変える
-			if (Input.mousePosition.x < Screen.width / 2)
-			{
-				Direction = Directions.Left;
-			}
-			else
-			{
-				Direction = Directions.Right;
-			}
+			Direction = direction;
 
 			// 方向転換時
 			if (prevDirection != Direction)

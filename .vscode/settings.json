@@ -53,7 +53,9 @@
     },
     "dotnet.preferCSharpExtension": true,
     "cSpell.words": [
-        "Behaviour"
-    ],
+		"Behaviour",
+		"Cysharp",
+		"Tweening"
+	],
     "dotnet.defaultSolution": "WoodCutter.sln"
 }

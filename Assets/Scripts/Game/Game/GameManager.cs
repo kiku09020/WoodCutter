@@ -15,12 +15,16 @@ namespace Game
 
 		//-------------------------------------------------------------------
 		/* Properties */
-		public bool IsGameOver { get; private set; }
+		public static bool IsGameOver { get; private set; }
 
 		//-------------------------------------------------------------------
 		/* Events */
+		public event System.Action OnGameOvered;
+
 		void Awake()
 		{
+			IsGameOver = false;
+
 			player.OnTapped += CheckGameOver;
 		}
 
@@ -28,10 +32,11 @@ namespace Game
 		/* Methods */
 		void CheckGameOver()
 		{
+			// プレイヤーの向きと木の一番下の枝の向きが同じ場合、ゲームオーバー
 			if (tree.GetBottomStemBranchDirection() == player.Direction)
 			{
 				IsGameOver = true;
-				Debug.Log("Game Over");
+				OnGameOvered?.Invoke();
 			}
 		}
 	}
