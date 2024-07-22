@@ -25,6 +25,8 @@ namespace Game.Tree
 
 		//-------------------------------------------------------------------
 		/* Properties */
+		/// <summary> 一番下の幹が枝を持っているかどうか </summary>
+		public bool HasBranchStemOnBottom => stems.Peek().HasBranch;
 
 		//-------------------------------------------------------------------
 		/* Events */
@@ -83,6 +85,21 @@ namespace Game.Tree
 			RemoveStemPosY(cutStem);
 		}
 
+		//------------------------------------------------------------
+
+		/// <summary> 一番下の幹の枝の方向を取得する </summary>
+		/// <returns> 枝の方向。枝がなければNoneを返す </returns>
+		public Directions GetBottomStemBranchDirection()
+		{
+			if (HasBranchStemOnBottom)
+			{
+				return stems.Peek().BranchDirection;
+			}
+			else
+			{
+				return Directions.None;
+			}
+		}
 	}
 
 }

@@ -24,6 +24,9 @@ namespace Game.Player
 		/// <summary> 方向転換時のイベント </summary>
 		public event System.Action<Transform, Directions> OnChangeDirection;
 
+		/// <summary> タップ時のイベント </summary>
+		public event System.Action OnTapped;
+
 		void Update()
 		{
 			if (Input.GetMouseButtonDown(0))
@@ -33,6 +36,9 @@ namespace Game.Player
 
 				// カット
 				OnCutTree?.Invoke(stemCutter);
+
+				// タップイベント
+				OnTapped?.Invoke();
 			}
 		}
 
