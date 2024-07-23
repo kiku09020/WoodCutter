@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Player;
+using Game.Score;
 using Game.Tree.Stem;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Game.Tree
 	{
 		/* Fields */
 		[SerializeField] PlayerObject player;
+		[SerializeField] ScoreController scoreController;
 
 		[Header("Components")]
 		[SerializeField] StemGenerator stemGenerator;
@@ -83,6 +85,10 @@ namespace Game.Tree
 			// 幹切る
 			var cutStem = stemCutter.CutStem(stems);
 			RemoveStemPosY(cutStem);
+
+			// スコア加算
+			// 幹によってスコア変更など
+			scoreController.AddScore();
 		}
 
 		//------------------------------------------------------------

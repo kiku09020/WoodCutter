@@ -55,7 +55,9 @@
     "cSpell.words": [
 		"Behaviour",
 		"Cysharp",
-		"Tweening"
+		"Tweening",
+		"UGUI",
+		"Yoyo"
 	],
     "dotnet.defaultSolution": "WoodCutter.sln"
 }

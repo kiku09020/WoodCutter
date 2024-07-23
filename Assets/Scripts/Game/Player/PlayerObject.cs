@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Score;
 using Game.Tree;
 using UnityEngine;
 
@@ -36,10 +37,13 @@ namespace Game.Player
 
 			inputManager.OnClick += (direction) =>
 			{
-				SetDirection(direction);
-
-				// カット
-				OnCutTree?.Invoke(stemCutter);
+				// 方向転換時はカットしない
+				var isChangedDirection = SetDirection(direction);
+				if (!isChangedDirection)
+				{
+					// カット
+					OnCutTree?.Invoke(stemCutter);
+				}
 
 				// タップイベント
 				OnTapped?.Invoke();
@@ -49,18 +53,23 @@ namespace Game.Player
 		//-------------------------------------------------------------------
 		/* Methods */
 		/// <summary> プレイヤーの左右位置を変更 </summary>
-		void SetDirection(Directions direction)
+		bool SetDirection(Directions direction)
 		{
+			var isChangedDirection = false;
+
 			Direction = direction;
 
 			// 方向転換時
 			if (prevDirection != Direction)
 			{
 				OnChangeDirection?.Invoke(transform, Direction);
+				isChangedDirection = true;
 			}
 
 			// 以前の方向を保存
 			prevDirection = Direction;
+
+			return isChangedDirection;
 		}
 	}
 }
