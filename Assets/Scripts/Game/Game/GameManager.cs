@@ -13,8 +13,6 @@ namespace Game
 		[SerializeField] PlayerObject player;
 		[SerializeField] TreeObject tree;
 
-		AppManager appManager = new();
-
 		//-------------------------------------------------------------------
 		/* Properties */
 		public static bool IsGameOver { get; private set; }
@@ -25,8 +23,6 @@ namespace Game
 
 		void Awake()
 		{
-			appManager.SetupApp();
-
 			IsGameOver = false;
 
 			player.OnTapped += CheckGameOver;
