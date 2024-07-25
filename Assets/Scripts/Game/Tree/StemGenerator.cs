@@ -2,23 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Tree.Stem;
+using Template.DesignPatterns.ObjectPool;
 
 namespace Game.Tree
 {
 	/// <summary> 幹の生成 </summary>
-	public class StemGenerator : MonoBehaviour
+	public class StemGenerator : PooledMonoBehaviourObjectManager<StemObject>
 	{
 		/* Fields */
-		[SerializeField] StemObject stemPrefab;
-		[SerializeField] BranchObject branchPrefab;
-
-		[Header("Prameters")]
-		[SerializeField, Tooltip("枝の生成確率")]
-		float branchProb = 0.3f;
-		[SerializeField, Tooltip("開始時の枝同士の最小間隔")]
-		int startMinBranchDistance = 5;
-
-		int currentBranchDistance;
+		[Header("Prefabs")]
+		[SerializeField] BranchGenerator branchGenerator;
 
 		//-------------------------------------------------------------------
 		/* Properties */
@@ -28,9 +21,11 @@ namespace Game.Tree
 
 		//-------------------------------------------------------------------
 		/* Methods */
-		public void Initialize()
+		public override void Initialize()
 		{
-			currentBranchDistance = startMinBranchDistance;
+			base.Initialize();
+
+			branchGenerator.Initialize();
 		}
 
 		/// <summary> 幹生成 </summary>
@@ -38,17 +33,13 @@ namespace Game.Tree
 		public StemObject GenerateStem(float currentStemPosY, bool isSetBranch = true)
 		{
 			// 生成
-			var stem = Instantiate(stemPrefab, new Vector3(0, currentStemPosY, 0), Quaternion.identity, transform);
+			var stem = pool.GetPooledObject(new Vector3(0, currentStemPosY, 0));
 
 			// 枝をセット
 			if (isSetBranch)
 			{
-				GenerateBranch(stem);
-
-				// 枝同士の間隔値を設定
-				currentBranchDistance--;
+				branchGenerator.GenerateBranch(stem);
 			}
-
 
 			return stem;
 		}
@@ -65,33 +56,7 @@ namespace Game.Tree
 
 		//------------------------------------------------------------
 
-		/// <summary> 枝をセット </summary>
-		void GenerateBranch(StemObject stem)
-		{
-			// 間隔が一定以上ないと生成しない
-			if (currentBranchDistance > 0)
-			{
-				return;
-			}
 
-			// 枝を生成するか
-			if (Random.value < branchProb)
-			{
-				var branch = Instantiate(branchPrefab, Vector3.zero, Quaternion.identity, stem.transform);
-
-				// 左右どちらに生成するか
-				var isLeftBranch = Random.value < 0.5f;
-				var branchDir = isLeftBranch ? Directions.Left : Directions.Right;
-				var branchPosX = isLeftBranch ? -1.0f : 1.0f;
-				var branchPos = new Vector3(branchPosX, 0, 0);
-				branch.transform.localPosition = branchPos;
-
-				stem.SetBranch(branch, branchDir);
-
-				// 枝同士の間隔値を設定
-				currentBranchDistance = startMinBranchDistance;
-			}
-		}
 
 	}
 }

@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Template.DesignPatterns.ObjectPool;
 using UnityEngine;
 
 namespace Game.Tree.Stem
 {
 	/// <summary> 幹オブジェクト </summary>
-	public class StemObject : MonoBehaviour
+	public class StemObject : PooledMonoBehaviour
 	{
 		/* Fields */
 		BranchObject branch;
@@ -20,9 +22,27 @@ namespace Game.Tree.Stem
 
 		//-------------------------------------------------------------------
 		/* Methods */
-		/// <summary> 枝をセット </summary>
-		public void SetBranch(BranchObject branch, Directions direction)
+		public override void SetPooledObject(IDisposable disposable)
 		{
+			base.SetPooledObject(disposable);
+
+			Initialize();
+		}
+
+		void Initialize()
+		{
+			HasBranch = false;
+			branch = null;
+			BranchDirection = Directions.None;
+		}
+
+		//------------------------------------------------------------
+
+		/// <summary> 枝をセット </summary>
+		public void SetBranch(BranchObject branch, Directions direction, Vector3 position)
+		{
+			branch.transform.SetParent(transform);
+			branch.transform.localPosition = position;
 			HasBranch = true;
 			this.branch = branch;
 			BranchDirection = direction;
@@ -31,11 +51,11 @@ namespace Game.Tree.Stem
 		/// <summary> 幹を切る </summary>
 		public void CutStem()
 		{
-			Destroy(gameObject);
+			Dispose();
 
 			if (HasBranch)
 			{
-				Destroy(branch.gameObject);
+				branch.Dispose();
 			}
 		}
 

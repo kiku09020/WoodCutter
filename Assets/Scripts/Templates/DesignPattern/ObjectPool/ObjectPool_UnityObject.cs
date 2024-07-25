@@ -64,6 +64,14 @@ namespace Template.DesignPatterns.ObjectPool
 				obj.SetActive(false);
 			};
 		}
+
+		public GameObject GetPooledObject(Vector3 position, Quaternion rotation = default)
+		{
+			var obj = Pool.Get();
+			obj.transform.position = position;
+			obj.transform.rotation = rotation;
+			return obj;
+		}
 	}
 
 	/// <summary> Component型がプール対象のオブジェクトプール </summary>
@@ -95,12 +103,20 @@ namespace Template.DesignPatterns.ObjectPool
 				obj.gameObject.SetActive(false);
 			};
 		}
+
+		public virtual T GetPooledObject(Vector3 position, Quaternion rotation = default)
+		{
+			var obj = Pool.Get();
+			obj.transform.position = position;
+			obj.transform.rotation = rotation;
+			return obj;
+		}
 	}
 
 	/// <summary> PooledMonoBehaviour型がプール対象のオブジェクトプール </summary>
 	/// <remarks> PooledMonoBehaviour型を継承した独自のクラスをプールする。
 	/// Disposableで、自身を解放できる </remarks>
-	public class ObjectPool_MonoBehaviour<T> : ObjectPool_UnityObject<T> where T : PooledMonoBehaviour
+	public class ObjectPool_MonoBehaviour<T> : ObjectPool_Component<T> where T : PooledMonoBehaviour
 	{
 		public ObjectPool_MonoBehaviour(T prefab, Transform parent, bool collectionCheck = true, int defaultCapacity = 10, int maxCapacity = 100)
 			: base(prefab, parent, collectionCheck, defaultCapacity, maxCapacity) { }
@@ -134,6 +150,15 @@ namespace Template.DesignPatterns.ObjectPool
 		{
 			var disposable = Pool.Get(out var obj);
 			obj.SetPooledObject(disposable);
+			return obj;
+		}
+
+		public override T GetPooledObject(Vector3 position, Quaternion rotation = default)
+		{
+			var disposable = Pool.Get(out var obj);
+			obj.SetPooledObject(disposable);
+			obj.transform.position = position;
+			obj.transform.rotation = rotation;
 			return obj;
 		}
 	}

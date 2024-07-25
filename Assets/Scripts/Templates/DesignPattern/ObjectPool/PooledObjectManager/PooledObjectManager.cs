@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Template.DesignPatterns.ObjectPool
 {
 	/// <summary> ObjectPoolを操作するクラス </summary>
-	public class PooledObjectManager<T> : MonoBehaviour where T : class
+	public abstract class PooledObjectManager<T, U> : MonoBehaviour where T : class where U : ObjectPoolBase<T>
 	{
 		[Header("Object")]
 		[SerializeField] protected T prefab;
@@ -17,24 +17,26 @@ namespace Template.DesignPatterns.ObjectPool
 		[SerializeField, Tooltip("プールの最大容量。これを超えている場合にReleaseされると、OnDestroyが呼ばれる")]
 		protected int maxCapacity = 100;
 
-		protected ObjectPoolBase<T> pool;
+		protected U pool;
+
+		public abstract void Initialize();
 	}
 
 	//------------------------------------------------------------
 
 	/// <summary> Component型がプール対象のオブジェクトプールを操作するクラス </summary>
-	public class PooledComponentObjectManager<T> : PooledObjectManager<T> where T : Component
+	public class PooledComponentObjectManager<T> : PooledObjectManager<T, ObjectPool_Component<T>> where T : Component
 	{
-		protected virtual void Awake()
+		public override void Initialize()
 		{
 			pool = new ObjectPool_Component<T>(prefab, parent, collectionCheck, defaultCapacity, maxCapacity);
 		}
 	}
 
 	/// <summary> PooledMonoBehaviour型がプール対象のオブジェクトプールを操作するクラス </summary>
-	public class PooledMonoBehaviourObjectManager<T> : PooledObjectManager<T> where T : PooledMonoBehaviour
+	public class PooledMonoBehaviourObjectManager<T> : PooledObjectManager<T, ObjectPool_MonoBehaviour<T>> where T : PooledMonoBehaviour
 	{
-		protected virtual void Awake()
+		public override void Initialize()
 		{
 			pool = new ObjectPool_MonoBehaviour<T>(prefab, parent, collectionCheck, defaultCapacity, maxCapacity);
 		}

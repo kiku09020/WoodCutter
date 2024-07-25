@@ -8,7 +8,7 @@ namespace Template.DesignPatterns.ObjectPool
 		private System.IDisposable disposable;
 
 		// Disposable取得
-		public void SetPooledObject(System.IDisposable disposable)
+		public virtual void SetPooledObject(System.IDisposable disposable)
 		{
 			this.disposable = disposable;
 		}
