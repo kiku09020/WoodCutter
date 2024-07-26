@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Game.Score
 {
+	public interface IScoreRef
+	{
+		int Score { get; }
+		event System.Action<int> OnChangeScore;
+	}
+
 	/// <summary> スコア操作クラス </summary>
-	public class ScoreController : MonoBehaviour
+	public class ScoreController : MonoBehaviour, IScoreRef
 	{
 		/* Fields */
 

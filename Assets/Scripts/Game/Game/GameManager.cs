@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Player;
+using Game.Score;
 using Game.Tree;
 using UnityEngine;
 

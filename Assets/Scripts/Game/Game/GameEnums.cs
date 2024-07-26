@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary> 方向 </summary>
 public enum Directions
 {
-	None,
-	Left,
-	Right,
+	Left = -1,
+	None = 0,
+	Right = 1,
 }

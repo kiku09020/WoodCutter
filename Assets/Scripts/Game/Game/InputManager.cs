@@ -13,11 +13,17 @@ namespace Game
 
 		//-------------------------------------------------------------------
 		/* Properties */
+		/// <summary> 最後にクリックしてからの経過時間 </summary>
+		public float LastClickedTimer { get; private set; }
+
+		public Directions Direction { get; private set; }
 
 		//-------------------------------------------------------------------
 		/* Events */
 		/// <summary> クリック時の方向を返す </summary>
 		public event System.Action<Directions> OnClick;
+
+		public event System.Action<float> OnUpdateLastClickedTimer;
 
 		void Update()
 		{
@@ -30,10 +36,15 @@ namespace Game
 				if (!CheckClickArea()) return;
 
 				// 左右方向取得
-				var direction = GetDirection();
+				Direction = GetDirection();
 
-				OnClick?.Invoke(direction);
+				OnClick?.Invoke(Direction);
+
+				LastClickedTimer = 0;
 			}
+
+			LastClickedTimer += Time.deltaTime;
+			OnUpdateLastClickedTimer?.Invoke(LastClickedTimer);
 		}
 
 		//-------------------------------------------------------------------

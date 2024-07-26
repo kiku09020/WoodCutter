@@ -9,7 +9,10 @@ namespace Game.Player
 	/// <summary> プレイヤー </summary>
 	public class PlayerObject : MonoBehaviour
 	{
+		[Header("Components")]
 		[SerializeField] InputManager inputManager;
+		[SerializeField] InputAbandonedChecker abandonedChecker;
+
 
 		/* Fields */
 		Directions prevDirection;
@@ -43,6 +46,7 @@ namespace Game.Player
 				{
 					// カット
 					OnCutTree?.Invoke(stemCutter);
+					abandonedChecker.ResetAbandonedTimer();
 				}
 
 				// タップイベント
