@@ -649,6 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerThreshold: 0.25
   footerThreshold: 0.05
+  allowRightClick: 1
 --- !u!4 &902161875
 Transform:
   m_ObjectHideFlags: 0

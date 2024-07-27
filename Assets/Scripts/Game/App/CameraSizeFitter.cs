@@ -48,8 +48,14 @@ namespace App
 		void ResizeCamera()
 		{
 			if (resizedCamera == null) return;
+
+			// Simulator -> Game View
+			if (UnityEngine.Device.SystemInfo.deviceType != DeviceType.Handheld)
+			{
+				resizedCamera.orthographicSize = referenceCameraSize;
+				return;
+			}
 			if (prevOrthographicSize == resizedCamera.orthographicSize) return;
-			if (UnityEngine.Device.SystemInfo.deviceType != DeviceType.Handheld) return;
 
 			var currentResolution = new Vector2(Screen.width, Screen.height);
 			var ratio = currentResolution.x / currentResolution.y;

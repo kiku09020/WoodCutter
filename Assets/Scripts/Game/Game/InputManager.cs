@@ -5,11 +5,14 @@ namespace Game
 	public class InputManager : MonoBehaviour
 	{
 		/* Fields */
+		[Header("TapArea")]
 		[SerializeField, Tooltip("ヘッダーのタップ領域外高さの割合")]
 		float headerThreshold = 0.25f;
-
 		[SerializeField, Tooltip("フッターのタップ領域外高さの割合")]
 		float footerThreshold = 0.1f;
+
+		[Header("Debug")]
+		[SerializeField] bool allowRightClick = false;
 
 		Directions prevDirection;
 
@@ -32,7 +35,8 @@ namespace Game
 			// ゲームオーバー時は入力を受け付けない
 			if (GameManager.IsGameOver) return;
 
-			if (Input.GetMouseButtonDown(0))
+			if (Input.GetMouseButtonDown(0) ||
+				(allowRightClick && Input.GetMouseButtonDown(1)))       // 右クリック許可
 			{
 				// クリックエリア外判定
 				if (!CheckClickArea()) return;

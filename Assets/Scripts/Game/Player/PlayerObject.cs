@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Game.Score;
-using Game.Tree;
 using UnityEngine;
 
 namespace Game.Player
@@ -13,9 +11,7 @@ namespace Game.Player
 		[SerializeField] InputManager inputManager;
 		[SerializeField] InputAbandonedChecker abandonedChecker;
 
-
 		/* Fields */
-		Directions prevDirection;
 		StemCutter stemCutter = new();
 
 		//-------------------------------------------------------------------
@@ -36,7 +32,6 @@ namespace Game.Player
 		void Awake()
 		{
 			Direction = Directions.Right;
-			prevDirection = Direction;
 
 			inputManager.OnClick += (direction, isChangedDirection) =>
 			{
