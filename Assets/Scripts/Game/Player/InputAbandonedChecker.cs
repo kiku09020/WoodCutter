@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Score;
+using Template.Utils;
 using UnityEngine;
 
 namespace Game
@@ -17,6 +19,8 @@ namespace Game
 		bool isAbandonCaution = false;
 		bool isAbandoned = false;
 
+		IScoreLevelRateRef scoreLevelRateRef;
+
 		//-------------------------------------------------------------------
 		/* Properties */
 
@@ -24,6 +28,8 @@ namespace Game
 		/* Events */
 		void Awake()
 		{
+			scoreLevelRateRef = ObjectUtils.FindObjectByInterface<IScoreLevelRateRef>();
+
 			inputManager.OnUpdateLastClickedTimer += CheckAbandoned;
 		}
 
@@ -37,8 +43,11 @@ namespace Game
 		{
 			if (isAbandoned) return;
 
+			// スコアレベル比率に応じて、操作放置時間を調整
+			var fixedMaxAbandonedTime = maxAbandonedTime * (1 - scoreLevelRateRef.ScoreLevelRate);
+
 			// 操作放置時の処理
-			var cautionTime = maxAbandonedTime * abandonCautionRate;
+			var cautionTime = fixedMaxAbandonedTime * abandonCautionRate;
 			if (lastClickedTimer > cautionTime && !isAbandonCaution)
 			{
 				Debug.Log("操作放置半分");
@@ -47,7 +56,7 @@ namespace Game
 			}
 
 			// 操作放置時の処理
-			if (lastClickedTimer > maxAbandonedTime)
+			if (lastClickedTimer > fixedMaxAbandonedTime)
 			{
 				Debug.Log("操作放置");
 				OnAbandoned?.Invoke(inputManager.Direction);
