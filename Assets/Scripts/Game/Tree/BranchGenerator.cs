@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Score;
 using Template.DesignPatterns.ObjectPool;
+using Template.Utils;
 using UnityEngine;
 
 namespace Game.Tree.Stem
@@ -16,6 +18,11 @@ namespace Game.Tree.Stem
 		int startMinBranchDistance = 5;
 
 		int currentBranchDistance;
+		int minBranchDistance;
+
+		Directions prevBranchDir;
+
+		IScoreLevelRateRef scoreLevelRef;
 
 
 		//-------------------------------------------------------------------
@@ -29,7 +36,10 @@ namespace Game.Tree.Stem
 		public override void Initialize()
 		{
 			base.Initialize();
-			currentBranchDistance = startMinBranchDistance;
+			minBranchDistance = startMinBranchDistance;
+			currentBranchDistance = minBranchDistance;
+
+			scoreLevelRef = ObjectUtils.FindObjectByInterface<IScoreLevelRateRef>();
 		}
 
 		/// <summary> 枝をセット </summary>
@@ -44,14 +54,35 @@ namespace Game.Tree.Stem
 				// 左右どちらに生成するか
 				var isLeftBranch = Random.value < 0.5f;
 				var branchDir = isLeftBranch ? Directions.Left : Directions.Right;
-				var branchPosX = isLeftBranch ? -1.0f : 1.0f;
+
+				// スコアに応じて、前回の枝と同じ方向に生成する確率を下げる
+				if (prevBranchDir != Directions.None &&
+					prevBranchDir == branchDir &&
+					Random.value < scoreLevelRef.ScoreLevelRate)
+				{
+					if (branchDir == Directions.Left)
+					{
+						branchDir = Directions.Right;
+					}
+					else
+					{
+						branchDir = Directions.Left;
+					}
+				}
+
+				prevBranchDir = branchDir;
+
+				var branchPosX = branchDir == Directions.Left ? -1.0f : 1.0f;
 				var branchPos = new Vector3(branchPosX, 0, 0);
 
 				stem.SetBranch(branch, branchDir, branchPos);
 
 				// 枝同士の間隔値を設定
-				currentBranchDistance = startMinBranchDistance;
+				currentBranchDistance = minBranchDistance;
 			}
+
+			// 最小間隔をスコアに応じて変更
+			minBranchDistance = Mathf.Max(2, startMinBranchDistance - (int)(scoreLevelRef.ScoreLevelRate * startMinBranchDistance));
 
 			// 枝同士の間隔値を減らす
 			currentBranchDistance--;

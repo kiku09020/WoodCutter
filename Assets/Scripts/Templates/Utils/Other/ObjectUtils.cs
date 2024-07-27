@@ -14,7 +14,13 @@ namespace Template.Utils
 		/// <summary> 指定されたインターフェースのMonoBehaviourクラスを取得する </summary>
 		public static IReadOnlyCollection<T> FindObjectsByInterface<T>() where T : IFoundObject
 		{
-			return Object.FindObjectsOfType<MonoBehaviour>().OfType<T>().ToArray();
+			return Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<T>().ToArray();
+		}
+
+		/// <summary> 指定されたインターフェースのMonoBehaviourクラスを取得する </summary>
+		public static T FindObjectByInterface<T>() where T : IFoundObject
+		{
+			return FindObjectsByInterface<T>().FirstOrDefault();
 		}
 	}
 }

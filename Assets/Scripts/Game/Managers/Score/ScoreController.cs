@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Template.Utils;
+
 namespace Game.Score
 {
-	public interface IScoreRef
+	/// <summary> スコアレベル比率参照インターフェース </summary>
+	public interface IScoreLevelRateRef : IFoundObject
 	{
-		int Score { get; }
-		event System.Action<int> OnChangeScore;
+		/// <summary> スコアレベル比率 </summary>
+		float ScoreLevelRate { get; }
 	}
 
 	/// <summary> スコア操作クラス </summary>
-	public class ScoreController : MonoBehaviour, IScoreRef
+	public class ScoreController : MonoBehaviour, IScoreLevelRateRef
 	{
 		/* Fields */
+		[SerializeField] int maxLevelScore = 1500;
+
+		public float ScoreLevelRate => (float)Score / maxLevelScore;
 
 		//-------------------------------------------------------------------
 		/* Properties */

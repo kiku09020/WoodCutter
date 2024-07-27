@@ -679,7 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 902161874}
   maxAbandonedTime: 5
-  abandonCautionRate: 0.6
+  abandonCautionRate: 0.4
 --- !u!1 &905584658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,6 +1199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbc213212a6a7a48bb90b52a2799b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLevelScore: 500
 --- !u!4 &1936035752
 Transform:
   m_ObjectHideFlags: 0
