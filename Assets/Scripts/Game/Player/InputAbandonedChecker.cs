@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Game
 {
 	/// <summary> プレイヤーの操作放置管理クラス </summary>
-	public class InputAbandonedChecker : MonoBehaviour
+	public class InputAbandonedChecker : MonoBehaviour, IGameOverChecker
 	{
 		/* Fields */
 		[SerializeField] InputManager inputManager;
@@ -63,7 +61,12 @@ namespace Game
 			// 操作放置タイマーリセット
 			OnResetAbandonedTimer?.Invoke();
 			isAbandoned = false;
+			isAbandonCaution = false;
 		}
+
+		//------------------------------------------------------------
+
+		public bool CheckGameOvered() => isAbandoned;
 
 	}
 }

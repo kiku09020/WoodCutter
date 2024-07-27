@@ -11,6 +11,8 @@ namespace Game
 		[SerializeField, Tooltip("フッターのタップ領域外高さの割合")]
 		float footerThreshold = 0.1f;
 
+		Directions prevDirection;
+
 		//-------------------------------------------------------------------
 		/* Properties */
 		/// <summary> 最後にクリックしてからの経過時間 </summary>
@@ -21,7 +23,7 @@ namespace Game
 		//-------------------------------------------------------------------
 		/* Events */
 		/// <summary> クリック時の方向を返す </summary>
-		public event System.Action<Directions> OnClick;
+		public event System.Action<Directions, bool> OnClick;
 
 		public event System.Action<float> OnUpdateLastClickedTimer;
 
@@ -37,10 +39,18 @@ namespace Game
 
 				// 左右方向取得
 				Direction = GetDirection();
+				var isChangedDirection = Direction != prevDirection;
 
-				OnClick?.Invoke(Direction);
+				// クリックイベント
+				OnClick?.Invoke(Direction, isChangedDirection);
 
-				LastClickedTimer = 0;
+				// 方向が同じ場合のみタイマーをリセット
+				if (!isChangedDirection)
+				{
+					LastClickedTimer = 0;
+				}
+
+				prevDirection = Direction;
 			}
 
 			LastClickedTimer += Time.deltaTime;

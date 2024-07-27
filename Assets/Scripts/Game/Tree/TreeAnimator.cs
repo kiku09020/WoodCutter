@@ -35,6 +35,11 @@ namespace Game.Tree
 			{
 				PlayTreeFallAnimation(direction);
 			};
+
+			abandonedChecker.OnResetAbandonedTimer += () =>
+			{
+				ResetTreeShakeAnimation();
+			};
 		}
 
 		//-------------------------------------------------------------------
@@ -43,7 +48,7 @@ namespace Game.Tree
 		void PlayTreeShakeAnimation()
 		{
 			shakeTween = treeObject.transform.DOShakePosition(1, 0.1f, 10, 90)
-				.SetLoops(-1, LoopType.Incremental);
+				.SetLoops(100, LoopType.Yoyo);
 		}
 
 		/// <summary> 木倒すアニメーション </summary>
@@ -56,6 +61,13 @@ namespace Game.Tree
 
 			treeObject.transform.DORotate(new Vector3(0, 0, fallRotation), fallDuration)
 				.SetEase(fallEase);
+		}
+
+		//------------------------------------------------------------
+		/// <summary> 木の揺れアニメーションをリセット </summary>
+		void ResetTreeShakeAnimation()
+		{
+			shakeTween.Complete();
 		}
 	}
 }

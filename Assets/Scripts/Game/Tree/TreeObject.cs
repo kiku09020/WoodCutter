@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Game.Tree
 {
 	/// <summary> 木 </summary>
-	public class TreeObject : MonoBehaviour
+	public class TreeObject : MonoBehaviour, IGameOverChecker
 	{
 		/* Fields */
 		[SerializeField] PlayerObject player;
@@ -95,7 +95,7 @@ namespace Game.Tree
 
 		/// <summary> 一番下の幹の枝の方向を取得する </summary>
 		/// <returns> 枝の方向。枝がなければNoneを返す </returns>
-		public Directions GetBottomStemBranchDirection()
+		Directions GetBottomStemBranchDirection()
 		{
 			if (HasBranchStemOnBottom)
 			{
@@ -106,6 +106,13 @@ namespace Game.Tree
 				return Directions.None;
 			}
 		}
+		public bool CheckGameOvered()
+		{
+			return GetBottomStemBranchDirection() == player.Direction;
+		}
+
+		//------------------------------------------------------------
+
 	}
 
 }

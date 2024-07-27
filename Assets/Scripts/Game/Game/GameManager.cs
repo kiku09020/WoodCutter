@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Player;
-using Game.Score;
 using Game.Tree;
 using UnityEngine;
+
+using Template.Utils;
 
 namespace Game
 {
@@ -12,7 +13,8 @@ namespace Game
 	{
 		/* Fields */
 		[SerializeField] PlayerObject player;
-		[SerializeField] TreeObject tree;
+
+		List<IGameOverChecker> gameOverCheckers = new List<IGameOverChecker>();
 
 		//-------------------------------------------------------------------
 		/* Properties */
@@ -26,18 +28,29 @@ namespace Game
 		{
 			IsGameOver = false;
 
-			player.OnTapped += CheckGameOver;
+			// ゲームオーバーチェッカー取得
+			gameOverCheckers.AddRange(ObjectUtils.FindObjectsByInterface<IGameOverChecker>());
+		}
+
+		void FixedUpdate()
+		{
+			if (IsGameOver) return;
+
+			CheckGameOver();
 		}
 
 		//-------------------------------------------------------------------
 		/* Methods */
 		void CheckGameOver()
 		{
-			// プレイヤーの向きと木の一番下の枝の向きが同じ場合、ゲームオーバー
-			if (tree.GetBottomStemBranchDirection() == player.Direction)
+			foreach (var checker in gameOverCheckers)
 			{
-				IsGameOver = true;
-				OnGameOvered?.Invoke();
+				if (checker.CheckGameOvered())
+				{
+					IsGameOver = true;
+					OnGameOvered?.Invoke();
+					break;
+				}
 			}
 		}
 	}

@@ -38,13 +38,19 @@ namespace Game.Player
 			Direction = Directions.Right;
 			prevDirection = Direction;
 
-			inputManager.OnClick += (direction) =>
+			inputManager.OnClick += (direction, isChangedDirection) =>
 			{
-				// 方向転換時はカットしない
-				var isChangedDirection = SetDirection(direction);
-				if (!isChangedDirection)
+				Direction = direction;
+
+				// 以前と方向が違う場合は、方向転換
+				if (isChangedDirection)
 				{
-					// カット
+					OnChangeDirection?.Invoke(transform, Direction);
+				}
+
+				// 以前と方向が同じ場合は、カット
+				else
+				{
 					OnCutTree?.Invoke(stemCutter);
 					abandonedChecker.ResetAbandonedTimer();
 				}
@@ -56,24 +62,5 @@ namespace Game.Player
 
 		//-------------------------------------------------------------------
 		/* Methods */
-		/// <summary> プレイヤーの左右位置を変更 </summary>
-		bool SetDirection(Directions direction)
-		{
-			var isChangedDirection = false;
-
-			Direction = direction;
-
-			// 方向転換時
-			if (prevDirection != Direction)
-			{
-				OnChangeDirection?.Invoke(transform, Direction);
-				isChangedDirection = true;
-			}
-
-			// 以前の方向を保存
-			prevDirection = Direction;
-
-			return isChangedDirection;
-		}
 	}
 }
