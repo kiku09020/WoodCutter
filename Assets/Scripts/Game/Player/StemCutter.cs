@@ -26,6 +26,15 @@ namespace Game.Player
 				return null;
 			}
 
+			// 枝アイテム落下処理
+			foreach (var stem in stems)
+			{
+				if (stem.HasBranch)
+				{
+					stem.Branch.FallBranchItem();
+				}
+			}
+
 			var cutStem = stems.Dequeue();
 			cutStem.CutStem();
 

@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 926541765793066436, guid: 57a3a26ab58f09745bbb426dd93cf52f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 926541765793066436, guid: 57a3a26ab58f09745bbb426dd93cf52f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6949202439677226829, guid: 57a3a26ab58f09745bbb426dd93cf52f, type: 3}
       propertyPath: m_Sprite
@@ -89,3 +89,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9892916e679413843a95a816d5793bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallProb: 1
+  fallSpeed: 0.3

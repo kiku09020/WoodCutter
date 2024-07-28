@@ -13,6 +13,7 @@ namespace Game
 		[SerializeField] InputManager inputManager;
 
 		[Header("Properties")]
+		[SerializeField] float minAbandonedTime = .5f;
 		[SerializeField] float maxAbandonedTime = 5f;
 		[SerializeField] float abandonCautionRate = 0.6f;
 
@@ -44,7 +45,7 @@ namespace Game
 			if (isAbandoned) return;
 
 			// スコアレベル比率に応じて、操作放置時間を調整
-			var fixedMaxAbandonedTime = maxAbandonedTime * (1 - scoreLevelRateRef.ScoreLevelRate);
+			var fixedMaxAbandonedTime = Mathf.Max(minAbandonedTime, maxAbandonedTime * (1 - scoreLevelRateRef.ScoreLevelRate));
 
 			// 操作放置時の処理
 			var cautionTime = fixedMaxAbandonedTime * abandonCautionRate;

@@ -17,6 +17,8 @@ namespace Game.Tree.Stem
 		public bool HasBranch { get; private set; }
 		public Directions BranchDirection { get; private set; }
 
+		public BranchObject Branch => branch;
+
 		//-------------------------------------------------------------------
 		/* Events */
 

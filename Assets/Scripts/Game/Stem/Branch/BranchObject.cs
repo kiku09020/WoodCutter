@@ -14,9 +14,18 @@ namespace Game.Tree.Stem
 
 		//-------------------------------------------------------------------
 		/* Properties */
+		bool HasBranchItem => branchItem != null;
 
 		//-------------------------------------------------------------------
 		/* Events */
+		public override void Dispose()
+		{
+			base.Dispose();
+
+			if (!HasBranchItem) return;
+			branchItem.Dispose();
+			branchItem = null;
+		}
 
 		//-------------------------------------------------------------------
 		/* Methods */
@@ -30,13 +39,17 @@ namespace Game.Tree.Stem
 			this.branchItem = branchItem;
 		}
 
-		public override void Dispose()
+		public void FallBranchItem()
 		{
-			base.Dispose();
+			if (!HasBranchItem) return;
+			var isFell = branchItem.Fall();
 
-			if (branchItem == null) return;
-			branchItem.Dispose();
-			branchItem = null;
+			if (isFell)
+			{
+				branchItem = null;
+			}
 		}
+
+
 	}
 }

@@ -679,6 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 902161874}
+  minAbandonedTime: 0.5
   maxAbandonedTime: 5
   abandonCautionRate: 0.4
 --- !u!1 &905584658
@@ -1115,7 +1116,7 @@ MonoBehaviour:
   parent: {fileID: 1779929033}
   collectionCheck: 1
   defaultCapacity: 8
-  maxCapacity: 8
+  maxCapacity: 32
   generatedProb: 0.1
 --- !u!114 &1779929035
 MonoBehaviour:
@@ -1133,8 +1134,8 @@ MonoBehaviour:
   parent: {fileID: 1779929033}
   collectionCheck: 1
   defaultCapacity: 8
-  maxCapacity: 8
-  generatedProb: 0.05
+  maxCapacity: 32
+  generatedProb: 1
 --- !u!114 &1779929036
 MonoBehaviour:
   m_ObjectHideFlags: 0
