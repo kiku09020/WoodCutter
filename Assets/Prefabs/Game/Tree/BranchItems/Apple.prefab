@@ -89,5 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9892916e679413843a95a816d5793bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallProb: 1
+  fallProb: 0.05
   fallSpeed: 0.3
+  score: 10

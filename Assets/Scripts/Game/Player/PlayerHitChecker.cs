@@ -15,11 +15,18 @@ namespace Game.Player
 		bool isGameOvered = false;
 		public bool CheckGameOvered() => isGameOvered;
 
+		Collider2D col;
+
 		//-------------------------------------------------------------------
 		/* Properties */
 
 		//-------------------------------------------------------------------
 		/* Events */
+		void Awake()
+		{
+			col = GetComponent<Collider2D>();
+		}
+
 		void OnTriggerEnter2D(Collider2D other)
 		{
 			// スコアアイテムの場合、スコアを加算
@@ -39,6 +46,10 @@ namespace Game.Player
 
 		//-------------------------------------------------------------------
 		/* Methods */
+		public void SetColliderEnabled(bool isEnabled)
+		{
+			col.enabled = isEnabled;
+		}
 
 	}
 }

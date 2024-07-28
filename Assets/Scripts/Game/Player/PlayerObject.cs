@@ -8,8 +8,10 @@ namespace Game.Player
 	public class PlayerObject : MonoBehaviour
 	{
 		[Header("Components")]
+		[SerializeField] PlayerHitChecker hitChecker;
 		[SerializeField] InputManager inputManager;
 		[SerializeField] InputAbandonedChecker abandonedChecker;
+		[SerializeField] GameManager gameManager;
 
 		/* Fields */
 		StemCutter stemCutter = new();
@@ -33,6 +35,13 @@ namespace Game.Player
 		{
 			Direction = Directions.Right;
 
+			// ゲームオーバー時に当たり判定を無効化
+			gameManager.OnGameOvered += () =>
+			{
+				hitChecker.SetColliderEnabled(false);
+			};
+
+			// カット処理
 			inputManager.OnClick += (direction, isChangedDirection) =>
 			{
 				Direction = direction;
