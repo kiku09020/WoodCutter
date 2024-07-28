@@ -1045,7 +1045,7 @@ MonoBehaviour:
   abandonedChecker: {fileID: 902161876}
   shakeDuration: 0.5
   fallDuration: 0.25
-  fallEase: 26
+  fallEase: 13
 --- !u!1 &1751924529
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,8 @@ namespace Game.Player
 		[SerializeField] float moveDuration = 0.5f;
 		[SerializeField] Ease moveEase;
 
+		Tween moveTween;
+
 		//-------------------------------------------------------------------
 		/* Properties */
 
@@ -34,7 +36,9 @@ namespace Game.Player
 			var directionSign = direction == Directions.Left ? -1 : 1;
 			var targetPositionX = playerPositionX * directionSign;
 
-			playerTransform.DOMoveX(targetPositionX, moveDuration)
+			moveTween?.Complete();
+
+			moveTween = playerTransform.DOMoveX(targetPositionX, moveDuration)
 				.SetEase(moveEase);
 		}
 	}

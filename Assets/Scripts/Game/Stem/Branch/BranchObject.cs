@@ -22,7 +22,7 @@ namespace Game.Tree.Stem
 		{
 			base.Dispose();
 
-			if (!HasBranchItem) return;
+			if (!HasBranchItem || branchItem.IsDisposed) return;
 			branchItem.Dispose();
 			branchItem = null;
 		}
@@ -34,7 +34,7 @@ namespace Game.Tree.Stem
 			if (branchItem == null) return;
 
 			branchItem.transform.SetParent(transform);
-			branchItem.transform.localPosition = Vector3.zero;
+			branchItem.transform.localPosition = Vector3.down;
 
 			this.branchItem = branchItem;
 		}

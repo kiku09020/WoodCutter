@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -31,9 +32,9 @@ namespace Game.Tree
 				PlayTreeShakeAnimation();
 			};
 
-			abandonedChecker.OnAbandoned += (direction) =>
+			abandonedChecker.OnAbandoned += (direction, onComplete) =>
 			{
-				PlayTreeFallAnimation(direction);
+				PlayTreeFallAnimation(direction, onComplete);
 			};
 
 			abandonedChecker.OnResetAbandonedTimer += () =>
@@ -52,15 +53,19 @@ namespace Game.Tree
 		}
 
 		/// <summary> 木倒すアニメーション </summary>
-		void PlayTreeFallAnimation(Directions direction)
+		void PlayTreeFallAnimation(Directions direction, System.Action onComplete)
 		{
 			shakeTween.Kill();
 
 			// TODO: プレイヤーの方向に合わせて倒す
 			var fallRotation = direction == Directions.Left ? 90 : -90;
 
-			treeObject.transform.DORotate(new Vector3(0, 0, fallRotation), fallDuration)
-				.SetEase(fallEase);
+			treeObject.transform.DOLocalRotate(new Vector3(0, 0, fallRotation), fallDuration)
+				.SetEase(fallEase)
+				.OnComplete(() =>
+				{
+					onComplete?.Invoke();
+				});
 		}
 
 		//------------------------------------------------------------

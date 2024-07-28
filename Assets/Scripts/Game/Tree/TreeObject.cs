@@ -40,7 +40,7 @@ namespace Game.Tree
 			GenerateStemsOnStart();
 
 			// カットイベント登録
-			player.OnCutTree += CutStem;
+			player.OnCutTree += () => CutStem(player.StemCutter);
 		}
 		//-------------------------------------------------------------------
 		/* Methods */

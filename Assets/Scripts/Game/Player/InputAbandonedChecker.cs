@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Game.Score;
 using Template.Utils;
 using UnityEngine;
@@ -35,7 +36,7 @@ namespace Game
 		}
 
 		public event System.Action<float> OnAbandonedCaution;
-		public event System.Action<Directions> OnAbandoned;
+		public event System.Action<Directions, System.Action> OnAbandoned;
 		public event System.Action OnResetAbandonedTimer;
 
 		//-------------------------------------------------------------------
@@ -60,9 +61,11 @@ namespace Game
 			if (lastClickedTimer > fixedMaxAbandonedTime)
 			{
 				Debug.Log("操作放置");
-				OnAbandoned?.Invoke(inputManager.Direction);
+				OnAbandoned.Invoke(inputManager.Direction, () =>
+				{
+					isAbandoned = true;
+				});
 
-				isAbandoned = true;
 			}
 		}
 

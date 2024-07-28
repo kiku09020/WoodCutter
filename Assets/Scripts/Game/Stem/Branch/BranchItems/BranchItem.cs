@@ -13,6 +13,8 @@ namespace Game.Tree.Branch.Item
 
 		float currentFallVel;
 
+		public bool IsDisposed { get; private set; }
+
 		//------------------------------------------------------------
 
 		public override void SetPooledObject(System.IDisposable disposable)
@@ -21,6 +23,14 @@ namespace Game.Tree.Branch.Item
 
 			isFalling = false;
 			currentFallVel = 0;
+			IsDisposed = false;
+		}
+
+		public override void Dispose()
+		{
+			base.Dispose();
+
+			IsDisposed = true;
 		}
 
 		void FixedUpdate()
