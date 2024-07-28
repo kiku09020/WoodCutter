@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Score;
+using Game.Tree.Branch.Item;
 using Template.DesignPatterns.ObjectPool;
 using Template.Utils;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Game.Tree.Stem
 	public class BranchGenerator : PooledMonoBehaviourObjectManager<BranchObject>
 	{
 		/* Fields */
+		[SerializeField] BranchItemHandler branchItemHandler;
+
 		[Header("Prameters")]
 		[SerializeField, Tooltip("枝の生成確率")]
 		float branchProb = 0.3f;
@@ -22,7 +25,7 @@ namespace Game.Tree.Stem
 
 		Directions prevBranchDir;
 
-		IScoreLevelRateRef scoreLevelRef;
+		IScoreRef scoreLevelRef;
 
 
 		//-------------------------------------------------------------------
@@ -36,10 +39,12 @@ namespace Game.Tree.Stem
 		public override void Initialize()
 		{
 			base.Initialize();
+			branchItemHandler.Initialize();
+
 			minBranchDistance = startMinBranchDistance;
 			currentBranchDistance = minBranchDistance;
 
-			scoreLevelRef = ObjectUtils.FindObjectByInterface<IScoreLevelRateRef>();
+			scoreLevelRef = ObjectUtils.FindObjectByInterface<IScoreRef>();
 		}
 
 		/// <summary> 枝をセット </summary>
@@ -49,7 +54,12 @@ namespace Game.Tree.Stem
 			if (currentBranchDistance <= 0 &&
 				Random.value < branchProb)
 			{
+				// 枝アイテムを生成
+				var branchItem = branchItemHandler.Generate();
+
+				// 枝を生成
 				var branch = pool.GetPooledObject(Vector3.zero);
+				branch.SetBranchItem(branchItem);
 
 				// 左右どちらに生成するか
 				var isLeftBranch = Random.value < 0.5f;

@@ -19,7 +19,7 @@ namespace Game
 		bool isAbandonCaution = false;
 		bool isAbandoned = false;
 
-		IScoreLevelRateRef scoreLevelRateRef;
+		IScoreRef scoreLevelRateRef;
 
 		//-------------------------------------------------------------------
 		/* Properties */
@@ -28,7 +28,7 @@ namespace Game
 		/* Events */
 		void Awake()
 		{
-			scoreLevelRateRef = ObjectUtils.FindObjectByInterface<IScoreLevelRateRef>();
+			scoreLevelRateRef = ObjectUtils.FindObjectByInterface<IScoreRef>();
 
 			inputManager.OnUpdateLastClickedTimer += CheckAbandoned;
 		}

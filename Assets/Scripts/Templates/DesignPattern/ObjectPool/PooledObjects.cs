@@ -14,7 +14,7 @@ namespace Template.DesignPatterns.ObjectPool
 		}
 
 		/// <summary> オブジェクトを解放する </summary>
-		public void Dispose()
+		public virtual void Dispose()
 		{
 			if (disposable == null) return;
 			disposable.Dispose();
