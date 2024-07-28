@@ -1128,7 +1128,9 @@ MonoBehaviour:
   collectionCheck: 1
   defaultCapacity: 8
   maxCapacity: 32
-  generatedProb: 0.1
+  generatedProb: 0.2
+  generatedProbMax: 0.5
+  scoreController: {fileID: 1936035751}
 --- !u!114 &1779929035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,7 +1148,7 @@ MonoBehaviour:
   collectionCheck: 1
   defaultCapacity: 8
   maxCapacity: 32
-  generatedProb: 1
+  generatedProb: 0.25
 --- !u!114 &1779929036
 MonoBehaviour:
   m_ObjectHideFlags: 0
