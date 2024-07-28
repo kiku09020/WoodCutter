@@ -1,8 +1,11 @@
 namespace Game.Tree.Branch.Item
 {
 	/// <summary> 蜂の巣 </summary>
-	public class Hive : BranchItem
+	public class Hive : BranchItem, IDeadlyItem
 	{
+		public void GetItem()
+		{
 
+		}
 	}
 }
