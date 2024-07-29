@@ -9,6 +9,7 @@ namespace Game
 	{
 		public async void Retry()
 		{
+			Time.timeScale = 1f;
 			await SceneManagerUtils.ReloadSceneAsync();
 		}
 	}

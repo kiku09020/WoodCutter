@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7094915371912752268
+--- !u!1001 &3847272578395033696
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,31 +10,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2054092396446290169, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_Name
-      value: RetryButton Variant
+      value: PauseButton Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_SizeDelta.x
@@ -74,11 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -48
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -128
+      value: -48
       objectReference: {fileID: 0}
     - target: {fileID: 7350741353719643595, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -98,22 +98,22 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2054092396446290169, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5308988839287736438}
+      addedObject: {fileID: 8122090254373425222}
   m_SourcePrefab: {fileID: 100100000, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
---- !u!1 &9148967906700328053 stripped
+--- !u!1 &3019056759174414489 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2054092396446290169, guid: 4a3fbc12d1c145843826c8fbe956f853, type: 3}
-  m_PrefabInstance: {fileID: 7094915371912752268}
+  m_PrefabInstance: {fileID: 3847272578395033696}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5308988839287736438
+--- !u!114 &8122090254373425222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9148967906700328053}
+  m_GameObject: {fileID: 3019056759174414489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1cda9c0705ef64fb34896b75352336, type: 3}
+  m_Script: {fileID: 11500000, guid: c4aac70c48ed15243b43055b756a40f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

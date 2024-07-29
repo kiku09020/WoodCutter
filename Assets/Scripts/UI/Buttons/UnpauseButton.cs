@@ -4,18 +4,15 @@ using UnityEngine;
 
 namespace Game.UI.Buttons
 {
-	public class RetryButton : ButtonBase
+	public class UnpauseButton : ButtonBase
 	{
 		/* Fields */
+
 		//-------------------------------------------------------------------
 		/* Properties */
 
 		//-------------------------------------------------------------------
 		/* Events */
-
-		//-------------------------------------------------------------------
-		/* Methods */
-
 
 		//-------------------------------------------------------------------
 		/* Methods */

@@ -33,7 +33,7 @@ namespace Game
 		void Update()
 		{
 			// ゲームオーバー時は入力を受け付けない
-			if (GameManager.IsGameOver) return;
+			if (GameManager.IsGameOver || GameManager.IsGamePaused) return;
 
 			if (Input.GetMouseButtonDown(0) ||
 				(allowRightClick && Input.GetMouseButtonDown(1)))       // 右クリック許可

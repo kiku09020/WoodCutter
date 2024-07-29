@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Template.DesignPatterns.State
 {
-	public class StateMachineBase<T> where T : IState, new()
+	public class StateMachineBase<T> where T : IState
 	{
 		/* Fields */
 		T firstState;
@@ -101,13 +101,6 @@ namespace Template.DesignPatterns.State
 			{
 				throw new System.Exception("Šù‚É“o˜^‚³‚ê‚Ä‚¢‚éState‚Å‚·");
 			}
-		}
-
-		/// <summary> ó‘Ô‚ğƒŠƒXƒg‚É’Ç‰Á‚·‚é </summary>
-		public virtual void AddState<State>() where State : T, new()
-		{
-			var state = new State();
-			AddState(state);
 		}
 
 		//------------------------------------------------------------
