@@ -18,7 +18,7 @@ namespace Game.Player
 
 		//-------------------------------------------------------------------
 		/* Methods */
-		public StemObject CutStem(Queue<StemObject> stems)
+		public StemObject CutStem(Queue<StemObject> stems, Directions direction)
 		{
 			// 幹がない場合はnullを返す
 			if (stems.Count == 0)
@@ -36,7 +36,7 @@ namespace Game.Player
 			}
 
 			var cutStem = stems.Dequeue();
-			cutStem.CutStem();
+			cutStem.CutStem(direction);
 
 			foreach (var stem in stems)
 			{

@@ -311,6 +311,7 @@ MonoBehaviour:
   branchItemHandler: {fileID: 1779929036}
   branchProb: 0.3
   startMinBranchDistance: 5
+  randomMinBranchDistance: 1
 --- !u!1 &312562962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1236,7 @@ MonoBehaviour:
   prefab: {fileID: 5650613147776818287, guid: 5a67e0395fdd206449075638fb9192da, type: 3}
   parent: {fileID: 1779929033}
   collectionCheck: 1
-  defaultCapacity: 8
+  defaultCapacity: 16
   maxCapacity: 32
   generatedProb: 0.2
   generatedProbMax: 0.5
@@ -1255,7 +1256,7 @@ MonoBehaviour:
   prefab: {fileID: 1581359340533695237, guid: f5ed4d48f28cadf438a29041c94e2fe9, type: 3}
   parent: {fileID: 1779929033}
   collectionCheck: 1
-  defaultCapacity: 8
+  defaultCapacity: 16
   maxCapacity: 32
   generatedProb: 0.25
 --- !u!114 &1779929036

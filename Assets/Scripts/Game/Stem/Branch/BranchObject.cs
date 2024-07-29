@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Tree.Branch.Item;
@@ -22,7 +23,7 @@ namespace Game.Tree.Stem
 		{
 			base.Dispose();
 
-			if (!HasBranchItem || branchItem.IsDisposed) return;
+			if (!HasBranchItem || branchItem.IsFalling) return;
 			branchItem.Dispose();
 			branchItem = null;
 		}
@@ -35,7 +36,7 @@ namespace Game.Tree.Stem
 
 			branchItem.transform.SetParent(transform);
 			branchItem.transform.localPosition = Vector3.down;
-
+			branchItem.transform.rotation = Quaternion.identity;
 			this.branchItem = branchItem;
 		}
 

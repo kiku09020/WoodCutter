@@ -19,6 +19,8 @@ namespace Game.Tree.Stem
 		float branchProb = 0.3f;
 		[SerializeField, Tooltip("開始時の枝同士の最小間隔")]
 		int startMinBranchDistance = 5;
+		[SerializeField, Tooltip("ランダムで変動する最小間隔")]
+		int randomMinBranchDistance = 3;
 
 		int currentBranchDistance;
 		int minBranchDistance;
@@ -52,7 +54,8 @@ namespace Game.Tree.Stem
 		{
 			// 一定間隔かつ一定確率で生成
 			if (currentBranchDistance <= 0 &&
-				Random.value < branchProb)
+				Random.value < branchProb ||
+				currentBranchDistance <= -randomMinBranchDistance)
 			{
 				// 枝アイテムを生成
 				var branchItem = branchItemHandler.Generate();

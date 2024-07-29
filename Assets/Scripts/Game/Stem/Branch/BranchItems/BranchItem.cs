@@ -9,33 +9,27 @@ namespace Game.Tree.Branch.Item
 		[SerializeField] float fallProb = 0.5f;
 		[SerializeField] float fallSpeed = 3;
 
-		bool isFalling = false;
-
 		float currentFallVel;
 
-		public bool IsDisposed { get; private set; }
+		public bool IsFalling { get; private set; }
 
 		//------------------------------------------------------------
 
 		public override void SetPooledObject(System.IDisposable disposable)
 		{
 			base.SetPooledObject(disposable);
-
-			isFalling = false;
+			IsFalling = false;
 			currentFallVel = 0;
-			IsDisposed = false;
 		}
 
 		public override void Dispose()
 		{
 			base.Dispose();
-
-			IsDisposed = true;
 		}
 
 		void FixedUpdate()
 		{
-			if (!isFalling) return;
+			if (!IsFalling) return;
 
 			// 落下処理
 			currentFallVel += Physics.gravity.y * Time.fixedDeltaTime;
@@ -43,7 +37,7 @@ namespace Game.Tree.Branch.Item
 
 			if (transform.position.y < -10f)
 			{
-				isFalling = false;
+				IsFalling = false;
 				Dispose();
 			}
 		}
@@ -52,10 +46,10 @@ namespace Game.Tree.Branch.Item
 		/// <summary> アイテム落下 </summary>
 		public bool Fall()
 		{
-			if (isFalling || fallProb < Random.value) return false;
+			if (IsFalling || fallProb < Random.value) return false;
 
 			// 落下処理
-			isFalling = true;
+			IsFalling = true;
 			transform.SetParent(null);
 
 			return true;

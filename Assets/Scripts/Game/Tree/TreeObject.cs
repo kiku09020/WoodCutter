@@ -83,7 +83,7 @@ namespace Game.Tree
 			AddStemPosY(generatedStem);
 
 			// 幹切る
-			var cutStem = stemCutter.CutStem(stems);
+			var cutStem = stemCutter.CutStem(stems, player.Direction);
 			RemoveStemPosY(cutStem);
 
 			// スコア加算

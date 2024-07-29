@@ -21,6 +21,7 @@ namespace Game.Tree.Stem
 
 		//-------------------------------------------------------------------
 		/* Events */
+		public event System.Action<Directions, System.Action> OnCut;
 
 		//-------------------------------------------------------------------
 		/* Methods */
@@ -29,6 +30,16 @@ namespace Game.Tree.Stem
 			base.SetPooledObject(disposable);
 
 			Initialize();
+		}
+
+		public override void Dispose()
+		{
+			base.Dispose();
+
+			if (HasBranch)
+			{
+				branch.Dispose();
+			}
 		}
 
 		void Initialize()
@@ -45,21 +56,16 @@ namespace Game.Tree.Stem
 		{
 			branch.transform.SetParent(transform);
 			branch.transform.localPosition = position;
+			branch.transform.rotation = Quaternion.identity;
 			HasBranch = true;
 			this.branch = branch;
 			BranchDirection = direction;
 		}
 
 		/// <summary> 幹を切る </summary>
-		public void CutStem()
+		public void CutStem(Directions direction)
 		{
-			Dispose();
-
-			if (HasBranch)
-			{
-				branch.Dispose();
-			}
+			OnCut?.Invoke(direction, Dispose);
 		}
-
 	}
 }
