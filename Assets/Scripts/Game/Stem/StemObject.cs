@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Template.DesignPatterns.ObjectPool;
 using UnityEngine;
 
@@ -10,7 +11,12 @@ namespace Game.Tree.Stem
 	public class StemObject : PooledMonoBehaviour
 	{
 		/* Fields */
+		[SerializeField] float moveDuration = 0.5f;
+		[SerializeField] Ease moveEase;
+
 		BranchObject branch;
+
+		Tween moveTween;
 
 		//-------------------------------------------------------------------
 		/* Properties */
@@ -66,6 +72,13 @@ namespace Game.Tree.Stem
 		public void CutStem(Directions direction)
 		{
 			OnCut?.Invoke(direction, Dispose);
+		}
+
+		public void PlayCuttingMoveAnimation()
+		{
+			moveTween?.Complete();
+			moveTween = transform.DOLocalMoveY(transform.localPosition.y - transform.localScale.y, moveDuration)
+				.SetEase(moveEase);
 		}
 	}
 }

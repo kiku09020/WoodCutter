@@ -17,7 +17,8 @@ namespace Game.Tree.Branch
 		[SerializeField] float jumpPower = 1;
 		[SerializeField] float jumpDuration = 1;
 		[SerializeField] Ease jumpEase;
-		[SerializeField] float scaleEnd = .5f;
+		[SerializeField] float randJumpMinPower = 0.8f;
+		[SerializeField] float randJumpMaxPower = 1.2f;
 
 
 		//-------------------------------------------------------------------
@@ -37,7 +38,9 @@ namespace Game.Tree.Branch
 			var directionSign = direction == Directions.Left ? 1 : -1;
 			var fixedJumpEndPos = new Vector3(jumpEndPos.x * directionSign, jumpEndPos.y, 0);
 
-			var jumpTween = transform.DOLocalJump(fixedJumpEndPos, jumpPower, 1, jumpDuration)
+			var randomJumpPower = Random.Range(randJumpMinPower, randJumpMaxPower) * jumpPower;
+
+			var jumpTween = transform.DOLocalJump(fixedJumpEndPos, randomJumpPower, 1, jumpDuration)
 				.SetEase(jumpEase)
 				.OnComplete(() =>
 				{

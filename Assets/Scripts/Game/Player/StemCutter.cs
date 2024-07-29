@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Game.Tree.Stem;
 using UnityEngine;
 
@@ -40,7 +41,7 @@ namespace Game.Player
 
 			foreach (var stem in stems)
 			{
-				stem.transform.position += new Vector3(0, -cutStem.transform.localScale.y, 0);
+				stem.PlayCuttingMoveAnimation();
 			}
 
 			return cutStem;
