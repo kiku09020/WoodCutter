@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Sound;
 using UnityEngine;
 
 namespace Game.Player
@@ -9,6 +10,7 @@ namespace Game.Player
 	{
 		[Header("Components")]
 		[SerializeField] PlayerHitChecker hitChecker;
+		[SerializeField] SEController seController;
 		[SerializeField] InputManager inputManager;
 		[SerializeField] InputAbandonedChecker abandonedChecker;
 		[SerializeField] GameManager gameManager;
@@ -43,6 +45,7 @@ namespace Game.Player
 			gameManager.OnGameOvered += () =>
 			{
 				hitChecker.SetColliderEnabled(false);
+				seController.PlayAudio("Dead");
 
 				OnGameOvered?.Invoke();
 			};
@@ -62,6 +65,7 @@ namespace Game.Player
 				// 以前と方向が同じ場合は、カット
 				else
 				{
+					seController.PlayAudio("Cut").SetRandomPitch(.9f, 1.1f);
 					OnCutTree?.Invoke();
 					abandonedChecker.ResetAbandonedTimer();
 				}
