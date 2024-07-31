@@ -13,8 +13,16 @@ PrefabInstance:
       value: AppleGetParticle
       objectReference: {fileID: 0}
     - target: {fileID: 967070674296072116, guid: 4f6ee0f2245a8764e94d08ada36cded9, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 967070674296072116, guid: 4f6ee0f2245a8764e94d08ada36cded9, type: 3}
       propertyPath: lengthInSec
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 967070674296072116, guid: 4f6ee0f2245a8764e94d08ada36cded9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 967070674296072116, guid: 4f6ee0f2245a8764e94d08ada36cded9, type: 3}
       propertyPath: ShapeModule.type

@@ -30,6 +30,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2522113915034400760}
+  - {fileID: 8797880307132571296}
   m_Father: {fileID: 1976573885721131746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -55,7 +56,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1976573885721131746}
+    m_TransformParent: {fileID: 9140090395170057520}
     m_Modifications:
     - target: {fileID: 3019056759174414489, guid: 8b7b301af3508df4284ce1b90f3bc429, type: 3}
       propertyPath: m_Name
@@ -111,23 +112,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6009867155207482795, guid: 8b7b301af3508df4284ce1b90f3bc429, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6009867155207482795, guid: 8b7b301af3508df4284ce1b90f3bc429, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6009867155207482795, guid: 8b7b301af3508df4284ce1b90f3bc429, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6009867155207482795, guid: 8b7b301af3508df4284ce1b90f3bc429, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -48
+      value: -32
       objectReference: {fileID: 0}
     - target: {fileID: 6009867155207482795, guid: 8b7b301af3508df4284ce1b90f3bc429, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -48
+      value: -32
       objectReference: {fileID: 0}
     - target: {fileID: 6009867155207482795, guid: 8b7b301af3508df4284ce1b90f3bc429, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -378,9 +379,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9007083954135916103, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9140090395170057520}
-    - targetCorrespondingSourceObject: {fileID: 9007083954135916103, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8797880307132571296}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4834059389101222434, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
       insertIndex: -1
