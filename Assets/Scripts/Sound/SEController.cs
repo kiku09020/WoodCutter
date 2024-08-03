@@ -5,6 +5,7 @@ namespace Game.Sound
 {
 	public class SEController : AudioController<SEController>
 	{
+
 		protected override void PlayAudio(AudioData audioData)
 		{
 			source.clip = audioData.Clip;
@@ -19,6 +20,14 @@ namespace Game.Sound
 			else
 			{
 				source.PlayOneShot(audioData.Clip);
+			}
+		}
+
+		public void PlayAudioAtPoint(string audioName, Vector3 position = default)
+		{
+			if (audioDataList.DataDict.TryGetValue(audioName, out var audioData))
+			{
+				AudioSource.PlayClipAtPoint(audioData.Clip, position);
 			}
 		}
 
@@ -57,5 +66,6 @@ namespace Game.Sound
 			source.pitch = Random.Range(min, max);
 			return this;
 		}
+
 	}
 }

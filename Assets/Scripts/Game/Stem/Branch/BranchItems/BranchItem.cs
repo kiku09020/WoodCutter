@@ -1,3 +1,4 @@
+using Game.Sound;
 using Template.DesignPatterns.ObjectPool;
 using UnityEngine;
 
@@ -6,12 +7,17 @@ namespace Game.Tree.Branch.Item
 	/// <summary> ブランチにつくアイテム基底クラス </summary>
 	public abstract class BranchItem : PooledMonoBehaviour
 	{
+		[Header("Components")]
+		[SerializeField] protected SEController seController;
+
+		[Header("Settings")]
 		[SerializeField] float fallProb = 0.5f;
 		[SerializeField] float fallSpeed = 3;
 
 		float currentFallVel;
 
 		public bool IsFalling { get; private set; }
+		public bool IsDisposed { get; private set; }
 
 		//------------------------------------------------------------
 
@@ -19,12 +25,14 @@ namespace Game.Tree.Branch.Item
 		{
 			base.SetPooledObject(disposable);
 			IsFalling = false;
+			IsDisposed = false;
 			currentFallVel = 0;
 		}
 
 		public override void Dispose()
 		{
 			base.Dispose();
+			IsDisposed = true;
 		}
 
 		void FixedUpdate()
@@ -51,6 +59,7 @@ namespace Game.Tree.Branch.Item
 			// 落下処理
 			IsFalling = true;
 			transform.SetParent(null);
+			seController.PlayAudio("Fall");
 
 			return true;
 		}

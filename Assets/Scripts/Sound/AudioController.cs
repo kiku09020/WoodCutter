@@ -40,6 +40,7 @@ namespace Game.Sound
 
 			// AudioSourceの取得
 			source = GetComponent<AudioSource>();
+			source.playOnAwake = false;
 		}
 
 		void OnDestroy()

@@ -62,7 +62,6 @@ namespace Game.Tree.Stem
 
 				// 枝を生成
 				var branch = pool.GetPooledObject(Vector3.zero);
-				branch.SetBranchItem(branchItem);
 
 				// 左右どちらに生成するか
 				var isLeftBranch = Random.value < 0.5f;
@@ -89,6 +88,8 @@ namespace Game.Tree.Stem
 				var branchPos = new Vector3(branchPosX, 0, 0);
 
 				stem.SetBranch(branch, branchDir, branchPos);
+				branch.SetBranchItem(branchItem);
+
 
 				// 枝同士の間隔値を設定
 				currentBranchDistance = minBranchDistance;

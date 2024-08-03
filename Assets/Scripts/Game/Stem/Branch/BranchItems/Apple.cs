@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Game.Tree.Branch.Item
@@ -17,14 +18,17 @@ namespace Game.Tree.Branch.Item
 
 			getParticle.transform.SetParent(transform);
 			getParticle.transform.localPosition = Vector3.zero;
+			getParticle.transform.localScale = Vector3.one;
 		}
 
 		public void GetItem()
 		{
 			getParticle.transform.SetParent(null);
 			getParticle.Play();
+			seController.PlayAudio("GetItem");
 
-			Dispose();
+			transform.DOScale(Vector3.zero, 0.25f)
+				.OnComplete(() => Dispose());
 		}
 	}
 }

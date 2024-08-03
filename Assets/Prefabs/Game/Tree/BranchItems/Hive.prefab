@@ -272,11 +272,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 926541765793066436, guid: 57a3a26ab58f09745bbb426dd93cf52f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 926541765793066436, guid: 57a3a26ab58f09745bbb426dd93cf52f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6949202439677226829, guid: 57a3a26ab58f09745bbb426dd93cf52f, type: 3}
       propertyPath: m_Sprite
@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720da2345606dbb4897938d02600eb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seController: {fileID: 2977104327768122417}
   fallProb: 0.15
   fallSpeed: 0.3
 --- !u!4 &1856344708655451793 stripped
@@ -361,3 +362,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7159767951756233455, guid: 57a3a26ab58f09745bbb426dd93cf52f, type: 3}
   m_PrefabInstance: {fileID: 8835944450761786494}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2977104327768122417 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6039142610408841295, guid: 57a3a26ab58f09745bbb426dd93cf52f, type: 3}
+  m_PrefabInstance: {fileID: 8835944450761786494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4cfe0a413679040aac3785a3b7be07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
