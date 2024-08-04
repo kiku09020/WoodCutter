@@ -14,8 +14,8 @@ namespace Game
 		[Header("Debug")]
 		[SerializeField] bool allowRightClick = false;
 
-		bool isFirstClicked = false;
-		Directions prevDirection;
+		public bool IsFirstClicked { get; private set; }
+		Directions prevDirection = Directions.Right;
 
 		//-------------------------------------------------------------------
 		/* Properties */
@@ -28,6 +28,8 @@ namespace Game
 		/* Events */
 		/// <summary> クリック時の方向を返す </summary>
 		public event System.Action<Directions, bool> OnClick;
+
+		public event System.Action OnClickFirst;
 
 		public event System.Action<float> OnUpdateLastClickedTimer;
 
@@ -58,14 +60,15 @@ namespace Game
 				prevDirection = Direction;
 
 				// 初回クリック
-				if (!isFirstClicked)
+				if (!IsFirstClicked)
 				{
-					isFirstClicked = true;
+					IsFirstClicked = true;
+					OnClickFirst?.Invoke();
 				}
 			}
 
 			// 初回クリックしていない場合は、タイマーを更新しない
-			if (!isFirstClicked) return;
+			if (!IsFirstClicked) return;
 			LastClickedTimer += Time.deltaTime;
 			OnUpdateLastClickedTimer?.Invoke(LastClickedTimer);
 		}

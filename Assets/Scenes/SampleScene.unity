@@ -1713,6 +1713,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 715390105135740489, guid: f18a3c738bfbfc34dbcc4adaf52114fa, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 902161874}
     - target: {fileID: 1201550269277181772, guid: f18a3c738bfbfc34dbcc4adaf52114fa, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1720,6 +1724,10 @@ PrefabInstance:
     - target: {fileID: 1201550269277181772, guid: f18a3c738bfbfc34dbcc4adaf52114fa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201550269277181772, guid: f18a3c738bfbfc34dbcc4adaf52114fa, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1976573885721131746, guid: f18a3c738bfbfc34dbcc4adaf52114fa, type: 3}
       propertyPath: m_Pivot.x
