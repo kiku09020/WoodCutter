@@ -12,9 +12,11 @@ namespace Game.Score
 		/* Fields */
 		[Header("Components")]
 		[SerializeField] ScoreController scoreController;
+		[SerializeField] ParticleSystem highScoreEffect;
 
 		[Header("UI")]
 		[SerializeField] TextMeshProUGUI scoreText;
+		[SerializeField] TextMeshProUGUI highScoreText;
 
 		[Header("Animations")]
 		[SerializeField] float animationDuration = 0.5f;
@@ -35,13 +37,24 @@ namespace Game.Score
 			scoreController.OnChangeScore += (score) =>
 			{
 				scoreText.text = score.ToString();
-				AnimationScoreText();
+				AnimationScoreText(scoreText);
+			};
+
+			scoreController.OnChangeHighScore += (highScore) =>
+			{
+				highScoreText.text = $"BEST:{highScore}";
+			};
+
+			scoreController.OnChangeHighScoreFirst += () =>
+			{
+				AnimationScoreText(highScoreText);
+				highScoreEffect.Play();
 			};
 		}
 
 		//-------------------------------------------------------------------
 		/* Methods */
-		void AnimationScoreText()
+		void AnimationScoreText(TextMeshProUGUI scoreText)
 		{
 			tween?.Complete();
 
