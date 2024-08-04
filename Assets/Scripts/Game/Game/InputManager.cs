@@ -14,6 +14,7 @@ namespace Game
 		[Header("Debug")]
 		[SerializeField] bool allowRightClick = false;
 
+		bool isFirstClicked = false;
 		Directions prevDirection;
 
 		//-------------------------------------------------------------------
@@ -55,8 +56,16 @@ namespace Game
 				}
 
 				prevDirection = Direction;
+
+				// 初回クリック
+				if (!isFirstClicked)
+				{
+					isFirstClicked = true;
+				}
 			}
 
+			// 初回クリックしていない場合は、タイマーを更新しない
+			if (!isFirstClicked) return;
 			LastClickedTimer += Time.deltaTime;
 			OnUpdateLastClickedTimer?.Invoke(LastClickedTimer);
 		}

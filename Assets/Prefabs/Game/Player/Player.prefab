@@ -320,9 +320,9 @@ MonoBehaviour:
   cutRotateAngle: 45
   cutDuration: 0.1
   cutEase: 9
-  deadDuration: 1
-  deadJumpPos: {x: 0, y: -5, z: 0}
-  deadJumpHeight: 8
+  deadDuration: 1.5
+  deadJumpPos: {x: 0, y: -10, z: 0}
+  deadJumpHeight: 12
   deadRotateAngle: 1080
   deadEase: 0
 --- !u!1 &5827315046080193302

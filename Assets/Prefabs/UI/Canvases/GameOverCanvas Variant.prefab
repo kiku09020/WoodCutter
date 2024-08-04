@@ -25,12 +25,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7240840411178547095}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5603745587258957749}
+  m_Father: {fileID: 5045843626849579547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -81,7 +81,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5603745587258957749}
+    m_TransformParent: {fileID: 5045843626849579547}
     m_Modifications:
     - target: {fileID: 538541033578536491, guid: 05894dbd5e93dbc41a9dc2de60e11630, type: 3}
       propertyPath: m_text
@@ -137,15 +137,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1600223686365138820, guid: 05894dbd5e93dbc41a9dc2de60e11630, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1600223686365138820, guid: 05894dbd5e93dbc41a9dc2de60e11630, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1600223686365138820, guid: 05894dbd5e93dbc41a9dc2de60e11630, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1600223686365138820, guid: 05894dbd5e93dbc41a9dc2de60e11630, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -189,6 +189,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2777090104278908307, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
+      propertyPath: m_Name
+      value: GameOverUIGroup
+      objectReference: {fileID: 0}
     - target: {fileID: 4834059389101222434, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
       propertyPath: m_Name
       value: GameOverCanvas Variant
@@ -280,49 +284,52 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 9007083954135916103, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8592137750819795945, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3438026337739029192}
-    - targetCorrespondingSourceObject: {fileID: 9007083954135916103, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8592137750819795945, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4286586506580488062}
-    - targetCorrespondingSourceObject: {fileID: 9007083954135916103, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8592137750819795945, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4854096752567061371}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4834059389101222434, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 2777090104278908307, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4287719970823858325}
+      addedObject: {fileID: 7541129863520271500}
   m_SourcePrefab: {fileID: 100100000, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
---- !u!224 &5603745587258957749 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9007083954135916103, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
-  m_PrefabInstance: {fileID: 3547455285828239858}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8227250436182830032 stripped
+--- !u!1 &1707184723439402081 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4834059389101222434, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2777090104278908307, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
   m_PrefabInstance: {fileID: 3547455285828239858}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4287719970823858325
+--- !u!114 &7541129863520271500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8227250436182830032}
+  m_GameObject: {fileID: 1707184723439402081}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66d61ce35958ab4478f34f49ead4b1e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scalingDuration: 0.5
+  scalingDelay: 1
+  scalingEase: 27
+--- !u!224 &5045843626849579547 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8592137750819795945, guid: 885be7944ff30ad4ba728c5deef20a9c, type: 3}
+  m_PrefabInstance: {fileID: 3547455285828239858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5127366761364707900
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5603745587258957749}
+    m_TransformParent: {fileID: 5045843626849579547}
     m_Modifications:
     - target: {fileID: 321206516816990535, guid: e245820b13369a442aff1775792a095f, type: 3}
       propertyPath: m_Pivot.x
@@ -374,15 +381,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 321206516816990535, guid: e245820b13369a442aff1775792a095f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 321206516816990535, guid: e245820b13369a442aff1775792a095f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 321206516816990535, guid: e245820b13369a442aff1775792a095f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 321206516816990535, guid: e245820b13369a442aff1775792a095f, type: 3}
       propertyPath: m_AnchoredPosition.x

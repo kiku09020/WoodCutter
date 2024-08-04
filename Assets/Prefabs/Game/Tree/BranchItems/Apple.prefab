@@ -167,6 +167,7 @@ MonoBehaviour:
   fallProb: 0.05
   fallSpeed: 0.3
   score: 10
+  col: {fileID: 8521980901240154554}
   getParticle: {fileID: 7318435934995554932}
 --- !u!4 &1856344708655451793 stripped
 Transform:
@@ -184,3 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4cfe0a413679040aac3785a3b7be07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &8521980901240154554 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 926541765793066436, guid: 57a3a26ab58f09745bbb426dd93cf52f, type: 3}
+  m_PrefabInstance: {fileID: 8835944450761786494}
+  m_PrefabAsset: {fileID: 0}

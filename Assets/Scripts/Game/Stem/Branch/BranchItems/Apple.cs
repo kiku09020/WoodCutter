@@ -8,6 +8,9 @@ namespace Game.Tree.Branch.Item
 	public class Apple : BranchItem, IScoreItem
 	{
 		[SerializeField] int score = 10;
+
+		[Header("Components")]
+		[SerializeField] Collider2D col;
 		[SerializeField] ParticleSystem getParticle;
 
 		public int Score => score;
@@ -19,10 +22,14 @@ namespace Game.Tree.Branch.Item
 			getParticle.transform.SetParent(transform);
 			getParticle.transform.localPosition = Vector3.zero;
 			getParticle.transform.localScale = Vector3.one;
+
+			col.enabled = true;
 		}
 
 		public void GetItem()
 		{
+			col.enabled = false;
+
 			getParticle.transform.SetParent(null);
 			getParticle.Play();
 			seController.PlayAudio("GetItem");
