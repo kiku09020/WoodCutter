@@ -7,7 +7,7 @@ namespace Game.State
 	public abstract class GameStateBase : MonoBehaviour, IState
 	{
 		/* Fields */
-		[SerializeField] UIGroup uiGroup;
+		[SerializeField] protected UIGroup uiGroup;
 
 		//-------------------------------------------------------------------
 		/* Properties */
